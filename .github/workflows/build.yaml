@@ -9,10 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container:
+      image: node:18-alpine
+      options: --cap-add=NET_ADMIN
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
 
     steps:
     - name: Checkout the code
