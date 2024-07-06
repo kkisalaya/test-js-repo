@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     services:
-      # Label used to access the service container
+      # Label used to access the service container 
       pse:
         image: invisirisk/pse:latest
         env:
