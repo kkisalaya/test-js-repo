@@ -21,6 +21,9 @@ jobs:
         node-version: [18.x]
 
     steps:
+    - name: Install system dependencies
+      run: apk add --no-cache curl wget git
+      
     - name: Start InvisiRisk PSE
       uses: kkisalaya/ir-action@0.8
       with:
