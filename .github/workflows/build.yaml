@@ -9,28 +9,39 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     container:
       image: node:18-alpine
       options: --cap-add=NET_ADMIN
+    
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-    - uses: kkisalaya/ir-action@0.4
-      with:
-          scan_id: TEMP_SCAN_ID
-          denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
-          pse_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/pse
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
       uses: actions/checkout@v3
+      
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        npm ci
+        
+    - name: Start InvisiRisk PSE
+      uses: kkisalaya/ir-action@v0.5
+      with:
+        scan_id: TEMP_SCAN_ID
+        denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
+        pse_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/pse
+        
+    - name: Build and Test
+      run: |
+        npm run build --if-present
+        npm test
