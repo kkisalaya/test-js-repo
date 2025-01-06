@@ -22,8 +22,8 @@ jobs:
       with:
           scan_id: TEMP_SCAN_ID
           denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
-          pse-url: https://ir-dev-public.s3.us-west-2.amazonaws.com/pse
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pse_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/pse
+          # github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
       uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
