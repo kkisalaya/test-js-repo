@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - name: Start InvisiRisk PSE
-      uses: kkisalaya/ir-action@0.6
+      uses: kkisalaya/ir-action@0.7
       with:
         scan_id: TEMP_SCAN_ID
         denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
