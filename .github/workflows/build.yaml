@@ -18,7 +18,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: kkisalaya/ir-action@v0.2
+    - uses: kkisalaya/ir-action@v0.3
       with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
