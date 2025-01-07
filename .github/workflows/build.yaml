@@ -24,15 +24,17 @@ jobs:
     - name: Install system dependencies
       run: apk add --no-cache curl wget git
       
+   
+        
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
     - name: Start InvisiRisk PSE
       uses: kkisalaya/ir-action@v0.21.0
       with:
         scan_id: TEMP_SCAN_ID
         denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
         pse_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/pse
-        
-    - name: Checkout the code
-      uses: actions/checkout@v3
       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
