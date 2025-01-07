@@ -1,36 +1,29 @@
 name: Build NPM Package
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     
-    container:
-      image: node:18-alpine
-      options: --cap-add=NET_ADMIN --user root
-    
     strategy:
       matrix:
         node-version: [18.x]
-
     steps:
     - name: Install system dependencies
-      run: apk add --no-cache curl wget git
-      
-   
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl wget git
         
     - name: Checkout the code
       uses: actions/checkout@v3
-
+      
     - name: Start InvisiRisk PSE
-      uses: kkisalaya/ir-action@v0.38.0
+      uses: kkisalaya/ir-action@v0.39.0
       with:
         scan_id: TEMP_SCAN_ID
         denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
@@ -45,8 +38,6 @@ jobs:
       run: |
         npm install
         npm ci
-        
-   
         
     - name: Build and Test
       run: |
