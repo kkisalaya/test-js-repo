@@ -25,7 +25,7 @@ jobs:
       run: apk add --no-cache curl wget git
       
     - name: Start InvisiRisk PSE
-      uses: kkisalaya/ir-action@0.12
+      uses: kkisalaya/ir-action@v0.12
       with:
         scan_id: TEMP_SCAN_ID
         denat_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/denat
