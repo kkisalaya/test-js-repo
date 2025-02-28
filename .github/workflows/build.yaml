@@ -15,7 +15,7 @@ jobs:
         node-version: [18.x]
     steps:
     - name: Setup PSE
-      uses: kkisalaya/ir-gh-action@v0.17
+      uses: kkisalaya/ir-gh-action@v0.18
       with:
         api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
@@ -46,9 +46,10 @@ jobs:
 
     - name: Cleanup PSE
       if: always()
-      uses: kkisalaya/ir-gh-action/cleanup-action@v0.14
+      uses: kkisalaya/ir-gh-action@v0.18
       with:
         api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
         portal_url: 'https://app.invisirisk.com'
+        cleanup: 'true'
         scan_id: ${{ env.SCAN_ID }}
