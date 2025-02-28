@@ -15,7 +15,7 @@ jobs:
         node-version: [18.x]
     steps:
     - name: Setup PSE
-      uses: ir-gh-action@v0.4
+      uses: kkisalaya/ir-gh-action@v0.4
       with:
         api_url: 'https://api.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
