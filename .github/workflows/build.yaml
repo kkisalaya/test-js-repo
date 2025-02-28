@@ -17,7 +17,7 @@ jobs:
     - name: Setup PSE
       uses: kkisalaya/ir-gh-action@v0.4
       with:
-        api_url: 'https://api.invisirisk.com'
+        api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
         portal_url: 'https://app.invisirisk.com'
     - name: Install system dependencies
