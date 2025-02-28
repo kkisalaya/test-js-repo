@@ -14,6 +14,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+    - name: Setup PSE
+      uses: ir-gh-action@v0.4
+      with:
+        api_url: 'https://api.invisirisk.com'
+        app_token: ${{ secrets.INVISIRISK_TOKEN }}
+        portal_url: 'https://app.invisirisk.com'
     - name: Install system dependencies
       run: |
         sudo apt-get update
