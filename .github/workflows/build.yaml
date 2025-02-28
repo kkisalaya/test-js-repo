@@ -22,13 +22,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v3
       
-    - name: Start InvisiRisk PSE
-      uses: kkisalaya/ir-action@v0.50.0
-      with:
-        scan_id: TEMP_SCAN_ID
-        package_url: https://ir-dev-public.s3.us-west-2.amazonaws.com/package.tar.gz
-        
-      
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
