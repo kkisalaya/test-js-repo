@@ -15,12 +15,10 @@ jobs:
         node-version: [18.x]
     steps:
     - name: Setup PSE
-      uses: kkisalaya/ir-gh-action@v0.22
+      uses: kkisalaya/ir-gh-action@v0.23
       with:
         api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
-        portal_url: 'https://app.invisirisk.com'
-        github_token: ${{ secrets.GH_TOKEN }}
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -47,11 +45,6 @@ jobs:
 
     - name: Cleanup PSE
       if: always()
-      uses: kkisalaya/ir-gh-action@v0.22
+      uses: kkisalaya/ir-gh-action@v0.23
       with:
-        api_url: 'https://app.invisirisk.com'
-        app_token: ${{ secrets.INVISIRISK_TOKEN }}
-        portal_url: 'https://app.invisirisk.com'
-        github_token: ${{ secrets.GH_TOKEN }}
         cleanup: 'true'
-        scan_id: ${{ env.SCAN_ID }}
