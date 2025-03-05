@@ -20,6 +20,7 @@ jobs:
         api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
         portal_url: 'https://app.invisirisk.com'
+        github_token: ${{ secrets.GH_TOKEN }}
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -51,5 +52,6 @@ jobs:
         api_url: 'https://app.invisirisk.com'
         app_token: ${{ secrets.INVISIRISK_TOKEN }}
         portal_url: 'https://app.invisirisk.com'
+        github_token: ${{ secrets.GH_TOKEN }}
         cleanup: 'true'
         scan_id: ${{ env.SCAN_ID }}
